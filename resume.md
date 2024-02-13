@@ -3,7 +3,6 @@ layout: page
 title: Resume
 permalink: /resume/
 ---
-# Noah Anderson
 Chicago, IL  
 
 
