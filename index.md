@@ -4,8 +4,7 @@ title: Home
 permalink: /
 ---
 
-![Headshot of Me](/path/to/your/headshot.jpg) <!-- Update with the actual path to your headshot image -->
-
+![Headshot of Me](images/headshot.jpg) 
 # About Me
 
 I am an Associate Research Data Analyst at CORNERS, Northwestern University, where my work revolves around advanced data analytics and R programming. My role involves conducting in-depth data analysis, process evaluation, and engaging in collaborative projects with diverse partners and stakeholders. 
