@@ -6,7 +6,7 @@ permalink: /contact/
 
 # Contact Me
 
-- I'm always open to discussing new opportunities, collaborations, or just connecting to share ideas. Feel free to reach out to me through any of the following channels:
+I'm always open to discussing new opportunities, collaborations, or just connecting to share ideas. Feel free to reach out to me through any of the following channels:
 
 ### Email
 - [noahanderson6556@gmail.com](mailto:noahanderson6556@gmail.com)
