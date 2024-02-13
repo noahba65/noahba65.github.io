@@ -7,8 +7,4 @@ permalink: /
 ![Headshot of Me](images/headshot.jpeg) 
 # About Me
 
-I am an Associate Research Data Analyst at CORNERS, Northwestern University, where my work revolves around advanced data analytics and R programming. My role involves conducting in-depth data analysis, process evaluation, and engaging in collaborative projects with diverse partners and stakeholders. 
-
-Currently, I am furthering my expertise through master's studies, focusing on the development of real-time predictive tools for bike share demand using machine learning. This project exemplifies my broader commitment to innovating and implementing critical data-driven solutions across various domains. 
-
-My goal is to make substantial contributions to projects where sophisticated analytics are pivotal for informed decision-making and strategic development.
+As an Associate Research Data Analyst at CORNERS, Northwestern University, I specialize in advanced data analytics and R programming. My role involves deep data analysis, process evaluation, and collaborative efforts with diverse partners and stakeholders. Supplementing this is my ongoing master's studies, with a focus on developing real-time predictive tools for bike share demand using machine learning. This specific application of data science underscores my broader ability to innovate and implement critical data-driven solutions in various domains. My objective is to contribute significantly to projects where sophisticated analytics are crucial for informed decision-making and strategic development.
