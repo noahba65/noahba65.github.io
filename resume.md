@@ -15,7 +15,6 @@ Chicago, IL
 - Data visualization
 - Data cleaning
 - Proficiency in Git
-- Advanced document formatting and presentation with Microsoft Office
 - Extensive use of Excel for data management and analysis (6 years)
 - Strong mathematical skills
 - Experience in synthesizing lab data into coherent scientific reports
@@ -75,5 +74,5 @@ Truman State University - Kirksville, Missouri
 Summer 2019  
 *Description:* A 10-week full-time research internship in theoretical astrophysics, resulting in a co-authored paper.  
 *Skills Acquired:* Data visualization, numerical simulations using Python and Wolfram Mathematica, technical writing  
-*Publication:* "Ultralight Dark Matter in the Solar System: Numerical Approaches" in the Bulletin of the American Physical Society, 2020.  
+*Publication:* ["Ultralight Dark Matter in the Solar System: Numerical Approaches"](https://www.academia.edu/88532572/Ultralight_Dark_Matter_in_the_Solar_System_Numerical_Approaches?uc-sb-sw=24492623) in the Bulletin of the American Physical Society, 2020.
 *Presentations:* Presented findings at the Truman State Summer Research Symposium and the MO-KAN-NE McNair Heartland Research Conference, September 2019.
