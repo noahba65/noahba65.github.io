@@ -59,7 +59,7 @@ The implications of this research extend beyond Divvy, suggesting a strategy for
 
 My study marks a step towards a future where data science is not just a support tool but a driving force in decision-making for urban mobility. For Divvy, the journey towards optimal balance is just beginning, with the potential to reshape the transportation landscape of Chicago and beyond.
 
-![Metrics Table Overview](/images/metrics_table.pdf)
+![Metrics Table Overview](/images/metrics_table.png)
 
 As I continue to explore data-driven solutions, I welcome collaboration and further innovation. Together, we can harness the power of data to transform urban transit—one bike at a time.
 
