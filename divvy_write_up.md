@@ -17,23 +17,25 @@ The foundation of my study is a comprehensive dataset from the Chicago Data Port
 
 ## The Model: Deciphering Urban Rhythms with StemGNN
 
-In the bustling urban environment of Chicago, Divvy bike stations are akin to network nodes, each with its own pattern of bike availability. My challenge was to predict the activity at these nodes, a task that required a robust approach to time-series data analysis: the StemGNN model.
+### Model Structure
+The StemGNN model innovatively combines Discrete Fourier Transform (DFT) and Graph Fourier Transform (GFT) to effectively analyze time-series data. The DFT component of StemGNN plays a pivotal role in modeling temporal dependencies, enabling the model to detect and interpret patterns like seasonality and autocorrelation, which are common in time-series data. This temporal analysis is crucial for understanding the underlying trends and cyclic behaviors in the dataset. In contrast, the GFT component focuses on interseries correlations, analyzing the spatial interactions between nodes. By employing GFT, the model is adept at uncovering the spatial relationships that exist in the data, providing insights into how different data points (or nodes) interact and influence each other in a given space.
 
-### Unveiling Patterns with Discrete Fourier Transform
+The model operates on data formatted in a $T * N$. At its core, StemGNN is composed of multiple neural network layers, each contributing to the deep learning capabilities of the model. The journey through the model begins with the Latent Correlation Layer, designed to initially explore and learn the spatial correlations present within the data. This layer sets the stage for more intricate spatial analyses which are further enhanced by subsequent layers. 
 
-The model employs Discrete Fourier Transform (DFT) to explore the temporal dynamics of the data, allowing me to identify patterns and dependencies that are critical for predicting dock occupancy rates.
+Following this, the Graph Fourier Transform is applied, transforming the data into the frequency domain with a specific focus on spatial relationships. This transformation is a crucial step in distilling the spatial characteristics of the data, enabling the model to handle complex spatial structures effectively. The model then shifts its focus to temporal aspects, employing the Discrete Fourier Transform (DFT). By applying DFT, StemGNN is able to transform the time-series data into the frequency domain, a step that is fundamental in unveiling and understanding temporal dynamics and patterns that unfold over time.
 
-### Exploring Spatial Dynamics with Graph Fourier Transform
+The model further refines its analysis with a 1D Convolutional layer, which is adept at extracting key temporal features from the data. This layer methodically scans the transformed data, pinpointing significant temporal features and patterns that are essential for accurate forecasting. The Spectral Graph Convolution layer then takes over, applying Graph Fourier Transform (GFT) to capture the intricate spatial correlations between different nodes. This layer is integral to understanding how different series or nodes within the graph are interconnected and influence each other, revealing the complex web of spatial dependencies in the dataset.
 
-Conversely, the Graph Fourier Transform (GFT) element of the model allowed me to examine spatial relationships within the network of bike stations, revealing how the activity of one station relates to another.
+An additional layer, the Gated Linear Unit (GLU), is incorporated into the model, serving as a sophisticated filter. The GLU layer critically evaluates and determines the relevance of the information processed by previous layers, ensuring that only pertinent features are carried forward for predictions. This layer adds an element of decision-making to the model's processing, enhancing its ability to focus on the most relevant aspects of the data.
 
-### Neural Network Layers: The Analytical Journey
+The final step in the model's processing pipeline is the application of the Inverse Discrete Fourier Transform (IDFT). This transformation is pivotal as it converts the frequency-domain data back into the time domain, making the model's outputs interpretable and directly applicable to the original temporal structure of the data. This step is essential for rendering the model's predictions and analyses in a format that is meaningful and actionable in real-world contexts.
 
-At the heart of the StemGNN model is a series of neural network layers, each designed to reveal deeper insights from the data. Starting with the Latent Correlation Layer, which uncovers spatial correlations, I navigated through transformative layers that shifted the data into both spatial and temporal frequency domains. This facilitated a comprehensive analysis of the intricate patterns present in the data.
 
 ### Adapting the Model for Divvy's Ecosystem
 
 The versatility of the StemGNN model meant that I could fine-tune it to suit the specificities of the Divvy bike-share data. I adapted the historical dock occupancy data into a structure compatible with the model, leading to forecasts that demonstrated remarkable accuracy and adaptability to urban mobility patterns.
+
+In this research, the focus was on fine-tuning two primary parameters of the StemGNN model: the learning rate and window size, while maintaining the default settings for other parameters. The learning rate influences the model's learning speed, and the window size specifies the quantity of past data points used for forecasting. Experiments were conducted with forecast horizons of 3 and 6 (equivalent to 30 and 60 minutes into the future), learning rates of 0.01, 0.001, and 0.0001, and window sizes of 6, 12, 18, were considered. The results shown in this write up only focus on the most successful learning rate of .001 and window size of 6. For more specifics on model tuning you can find a downloadable pdf of my academic paper regarding Divvy for Stem GNN [here](https://github.com/noahba65/stemGNN_divvy/blob/capstone/Assignments/final-paper/final_paper.pdf) 
 
 ### The Outcome: Precision in Forecasting
 
