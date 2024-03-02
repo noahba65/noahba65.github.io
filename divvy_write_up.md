@@ -10,21 +10,33 @@ Divvy, the city-owned bike share program of Chicago, operated in partnership wit
 
 ## Balancing Bikes and Docks in Chicago's Dynamic Landscape
 
-In my analysis of Chicago's Divvy bike share program, I've observed firsthand the complexities associated with its growth. The program's success reflects the city's commitment to sustainable transportation, yet it also poses a challenge: ensuring bike and dock availability are balanced across an extensive network of stations. Traditionally, Divvy has relied on manual redistribution of bikes, a process I found to be inefficient and non-scalable.
+The program's success reflects the city's commitment to sustainable transportation, yet it also poses a challenge: ensuring bike and dock availability are balanced across an extensive network of stations. The problem arises when Divvy rebalncing workers leave for a station that is empty, but by the time they get there, it is full. Or they leave a general area with stations that will soon be wiped out by morning rush hour Divvy commuters. 
 
-This led me to explore predictive modeling, specifically the application of advanced algorithms that can predict potential imbalances. My research centered on the [StemGNN model](https://arxiv.org/abs/2103.07719), developed by Cao et al. (2020), which was originally designed for complex network systems like traffic flows.
+This led me to explore predictive modeling, specifically the application of advanced algorithms that can predict potential imbalances 30 and 60 minutes ahead to give rebalancing workers an edge when it comes to route planning.
+
+What makes this model so complex is that it is dynamic in both space and time. When you are predicting station status over time, each station can be thought as a time series. These could be thought of as independent time series, but it is more complicated by the fact that riders ride from one station to another causing station statuses across stations to be correlated in space. This data would be classified as a joint time series. Joint time series can be tricky and most standard forecasting models such as linear regressions, ARIMA, or Facebooks Prophet model are not directly applicable. All of these could be coereced to fit the problem, but there are more specific models designed for problems like these. 
+
+This led me to the [StemGNN model](https://arxiv.org/abs/2103.07719), developed by Cao et al. (2020). This model was was originally designed for complex network systems like traffic flows in Los Angeles. Each traffic sensor was treated as a node in a network where traffic flowed over time between each sensor. Divvy bike station relationships over time present a very similar setup. 
 
 
 ## The Data Dive and Machine Learning Approach
 
-The foundation of my study is a comprehensive dataset from the Chicago Data Portal, which provided detailed insights into bike availability trends. With this data, I trained the StemGNN model to understand not just the timing of bike demand but also how it interconnects across different locations in the city.
+The foundation of my study is a comprehensive dataset from the [Chicago Data Portal](https://data.cityofchicago.org/), which provided detailed insights into bike availability across Divvy stations every 10 minutes. This data spans from 2013-2022 and contains 242 million rows. To make this a more approachable problem, I scaled down the data and to contain data from July 2022 through September of 2022 and to contain only 3 community areas, the idea being that training it on city wide data that spans the full 9 year period would require far too many computational power for an efficient real time tool. July through September were the selected months since that is the peak ridership of Divvy providing the most dynamic data. 
+
+The chosen community areas, which can be seen below, are Lincoln Square, Uptown, and North Center. These areas were selected strategically since they are not directly connected by the Red Line, Chicago's busiest commuter rail line running North-South, resulting in increased and dynamic ridership as residents rely on Divvy to travel East to West.
+![Target Community Areas](/images/target_community_areas.png)
+
+In total there have been 
+
+
+With this data, I trained the StemGNN model to understand not just the timing of bike demand but also how it interconnects across different locations in the city.
 
 ## The Model: Deciphering Urban Rhythms with StemGNN
 
 ### Model Structure
 The StemGNN model innovatively combines Discrete Fourier Transform (DFT) and Graph Fourier Transform (GFT) to effectively analyze time-series data. The DFT component of StemGNN plays a pivotal role in modeling temporal dependencies, enabling the model to detect and interpret patterns like seasonality and autocorrelation, which are common in time-series data. This temporal analysis is crucial for understanding the underlying trends and cyclic behaviors in the dataset. In contrast, the GFT component focuses on interseries correlations, analyzing the spatial interactions between nodes. By employing GFT, the model is adept at uncovering the spatial relationships that exist in the data, providing insights into how different data points (or nodes) interact and influence each other in a given space.
 
-The model operates on data formatted in a $T * N$. At its core, StemGNN is composed of multiple neural network layers, each contributing to the deep learning capabilities of the model. The journey through the model begins with the Latent Correlation Layer, designed to initially explore and learn the spatial correlations present within the data. This layer sets the stage for more intricate spatial analyses which are further enhanced by subsequent layers. 
+The model operates on data formatted in a T * N. At its core, StemGNN is composed of multiple neural network layers, each contributing to the deep learning capabilities of the model. The journey through the model begins with the Latent Correlation Layer, designed to initially explore and learn the spatial correlations present within the data. This layer sets the stage for more intricate spatial analyses which are further enhanced by subsequent layers. 
 
 Following this, the Graph Fourier Transform is applied, transforming the data into the frequency domain with a specific focus on spatial relationships. This transformation is a crucial step in distilling the spatial characteristics of the data, enabling the model to handle complex spatial structures effectively. The model then shifts its focus to temporal aspects, employing the Discrete Fourier Transform (DFT). By applying DFT, StemGNN is able to transform the time-series data into the frequency domain, a step that is fundamental in unveiling and understanding temporal dynamics and patterns that unfold over time.
 
@@ -45,7 +57,8 @@ In this research, the focus was on fine-tuning two primary parameters of the Ste
 
 By customizing the StemGNN model to Divvy's data, I created a predictive tool capable of forecasting dock availability with significant precision. The integration of the Inverse Discrete Fourier Transform was the final step, translating the model's predictions into practical, actionable insights.
 
-Through this process, I'm not just addressing the current imbalances in bike availability; I'm anticipating future trends, paving the way for a more efficient bike-share experience throughout Chicago.
+Through this process, I'm not just addres
+sing the current imbalances in bike availability; I'm anticipating future trends, paving the way for a more efficient bike-share experience throughout Chicago.
 
 ## Insights and Implications
 
