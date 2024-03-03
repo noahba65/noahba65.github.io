@@ -1,4 +1,8 @@
-
+---
+layout: page
+title: Divvy Bike Share Project
+permalink: /divvy_write_up/
+---
 
 # Navigating the Divvy Bike Share Challenge with Data Science
 
